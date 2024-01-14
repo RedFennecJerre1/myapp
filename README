@@ -1,0 +1,17 @@
+GIT REPO: https://github.com/RedFennecJerre1/myapp.git
+
+Application with Post and People 
+You  see the main pages has 4 tabs to different functions of the site. 
+You can go to the People who enter their information. 
+You can add information 
+You can go to the posts. 
+You can add Posts. 
+
+You can see the list of people. A person has a name, an email and an age. You can click a person to delete or edit their information. 
+You can see the list op posts. A post has a name, a category and content. You can click a post to change or edit the information. 
+
+You can add a person. The information of the person is a name, email and age. 
+You can add a post. The information of the post is a name, category and content. 
+
+
+MongoDB and Express are used. 
