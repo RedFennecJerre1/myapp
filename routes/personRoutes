@@ -5,6 +5,16 @@ const Person = require('../models/personSchema');
 // Create a new person
 router.post('/', async (req, res) => {
   const { name, email, age } = req.body;
+  if (typeof name !== 'string' || typeof email !== 'string') {
+    return res.status(400).send('Name and Email must be strings');
+ }
+
+
+ // Check if the age is an integer
+ if (isNaN(age)) {
+    return res.status(400).send('Age must be a numeric value');
+ }
+
   const person = new Person(req.body);
 
   try {

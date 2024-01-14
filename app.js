@@ -37,6 +37,15 @@ app.get("/people/:id", async (req, res) => {
   });
   
 app.post("/people/:id", async (req, res) => {
+    const { name, age } = req.body;
+    if (typeof name !== 'string') {
+        return res.status(400).send('Name must be string');
+     }
+    
+     // Check if the age is an integer
+     if (isNaN(age)) {
+        return res.status(400).send('Age must be a numeric value');
+     }
     const updatedPerson = await Person.findByIdAndUpdate(
         req.params.id,
         req.body,
@@ -60,6 +69,7 @@ app.post("/people/:id", async (req, res) => {
   });
 
 
+
   app.get('/posts', async (req, res) => {
     const post = await Post.find({});
     res.render('post', { post });
@@ -72,6 +82,13 @@ app.get("/posts/:id", async (req, res) => {
   });
   
 app.post("/posts/:id", async (req, res) => {
+    const { name, category, content } = req.body;
+    if (typeof name !== 'string' || typeof category !== 'string' || typeof content !== 'string') {
+      return res.status(400).send('Name, category and content must be strings');
+   }
+
+
+
     const updatedPost = await Post.findByIdAndUpdate(
         req.params.id,
         req.body,

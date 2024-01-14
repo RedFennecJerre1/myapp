@@ -4,6 +4,12 @@ const Post = require('../models/postSchema');
 
 // Create a new post
 router.post('/', async (req, res) => {
+  const { name, category, content } = req.body;
+  if (typeof name !== 'string' || typeof category !== 'string' || typeof content !== 'string') {
+    return res.status(400).send('Name, category and content must be strings');
+ }
+
+
   const post = new Post(req.body);
 
   try {
@@ -57,6 +63,8 @@ router.patch('/:id', async (req, res) => {
     res.status(400).send(error);
   }
 });
+
+
 
 // Delete a post with a given id
 router.delete('/:id', async (req, res) => {
