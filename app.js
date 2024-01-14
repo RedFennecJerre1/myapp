@@ -1,9 +1,17 @@
 const express = require('express');
+const { urlencoded } = require('body-parser');
 const app = express();
+app.use(urlencoded({ extended: true }));
 const port = 3000;
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.render('index');
+});
+
+app.get('/person/add', (req, res) => {
+    res.render('add-person');
 });
 
 app.listen(port, () => {
@@ -11,7 +19,7 @@ app.listen(port, () => {
 });
 
 const personRoutes = require('./routes/personRoutes');
-app.use('/api/people', personRoutes);
+app.use('/person', personRoutes);
 
 
 //mongoDB

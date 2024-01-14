@@ -4,6 +4,7 @@ const Person = require('../models/personSchema');
 
 // Create a new person
 router.post('/', async (req, res) => {
+  const { name, email, age } = req.body;
   const person = new Person(req.body);
 
   try {
