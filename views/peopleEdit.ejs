@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People List</title>
+</head>
+<body>
+    <h1>Edit Person</h1>
+    <form method="post" action="/people/<%= person._id %>">
+     <label for="name">Name:</label>
+     <input type="text" name="name" id="name" value="<%= person.name %>">
+     <label for="age">Age:</label>
+     <input type="number" name="age" id="age" value="<%= person.age %>">
+     <button type="submit">Update</button>
+    </form>
+    <form method="post" action="/people/delete/<%= person._id %>">
+        <button type="submit">Delete</button>
+    </form>
+</body>
+</html>
